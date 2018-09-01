@@ -1,0 +1,15 @@
+legend Login
+= form_for :session, url: login_path, html: { class: "form-horizontal", role: "form" } do |f|
+  .form-group
+    = f.label :name, 'Username', class: "col-sm-2 control-label"
+    br
+    .col-sm-10
+      = f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :password, 'Password', class: "col-sm-2 control-label"
+    br
+    .col-sm-10
+      = f.password_field :password, class: "form-control"
+  .form-group
+    .col-sm-offset-2.col-sm-10.actions
+      = f.submit 'Login', class: "btn btn-primary"

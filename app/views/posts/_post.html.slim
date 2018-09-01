@@ -1,0 +1,22 @@
+- post.interactions.each do |itr|
+  | <tr class=post_
+  = post.id
+  | >
+  td
+    = post.id
+  td.title
+    = post.title
+  td.content
+    = post.content
+  td.cnt-like
+    = itr.like
+  td
+    = link_to budgets_path(:post_id => post.id)
+      = button_tag "Download"
+  td
+    = link_to 'Show', post
+  td
+    = link_to 'Edit', edit_post_path(post), class: "update-post", remote: true
+  td
+    = link_to 'Delete', post, method: 'delete', data: {confirm:'Are you sure?'}, remote: true, class: 'destroy-post'
+  | </tr>

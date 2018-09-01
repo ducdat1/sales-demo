@@ -1,0 +1,29 @@
+- content_for :title do
+  |  List Product
+
+= render 'partials/messages'
+.page-header
+  = link_to new_product_path, class: 'add-category btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    |  New Product
+  h1
+    | Products
+br
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th
+        | Title
+        span.glyphicon.glyphicon-sort.icon_sort
+      th
+        | Description
+        span.glyphicon.glyphicon-sort.icon_sort
+      th
+        | Image url
+        span.glyphicon.glyphicon-sort.icon_sort
+      th
+        | Price
+        span.glyphicon.glyphicon-sort.icon_sort
+      th[colspan="3"]
+  tbody
+    = render @products

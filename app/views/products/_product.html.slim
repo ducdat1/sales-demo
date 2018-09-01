@@ -1,0 +1,16 @@
+tr
+  td
+    = product.title
+  td
+    = product.description
+  td
+    / = image_tag(product.image_url)
+    = link_to(image_tag(product.image_url.small_thumb.url, alt: 'Image'), product.image_url.url, target: '_blank') if product.image_url?
+  td
+    = product.price
+  td
+    = link_to 'Show', product
+  td
+    = link_to 'Edit', edit_product_path(product)
+  td
+    = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }

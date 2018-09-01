@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Firstname:
+  = @person.firstname
+p
+  strong Lastname:
+  = @person.lastname
+p
+  strong Email:
+  = @person.email
+p
+  strong City:
+  = @person.city
+p
+  strong State:
+  = @person.state
+
+=> link_to 'Edit', edit_person_path(@person)
+'|
+=< link_to 'Back', people_path

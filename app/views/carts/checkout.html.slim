@@ -1,0 +1,42 @@
+- content_for :title do
+  |   Confirm Cart
+
+h1
+  | Cart information
+
+= render 'partials/messages'
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th
+        | No.
+      th
+        | Title
+      th
+        | Quantity
+      th
+        | Price
+      th
+        | Total
+      th
+  tbody
+    - @cart.line_items.each do |line_item|
+      tr
+        td
+        td
+          = line_item.product.title
+        td
+          = line_item.quantity
+        td
+          = line_item.product.price
+        td
+          = number_to_currency(line_item.total_price)
+        td
+    tr
+      td[colspan="4"]
+        | Total
+      td
+        = number_to_currency(@cart.total_price)
+
+= button_to 'Back to cart', checkout_path, method: 'get'
+= button_to 'Confirm', checkout_path, method: 'get', confirm: 'Are you sure?'

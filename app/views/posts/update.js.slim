@@ -1,0 +1,27 @@
+| $("#form-post-update").html("
+= j render 'posts/update'
+| ");
+
+
+/ | $('#posts').find('#post_
+/ = @post.id
+/ | ', function(){ $(this).find('td.title').html("
+/ = @post.title
+/ | "); $(this).find('td.content').html("
+/ = @post.content
+/ | "); });
+
+/ - if @post.errors.empty?
+  //add new record to table
+  | $("
+  = escape_javascript(render @post)
+  | ").appendTo("#posts");
+
+  - flash.each do |name, msg|
+    - if msg.is_a?(String)
+      - message =  name.to_s == 'notice' ? 'success' : 'danger'
+      | $("ul.notice").html('<div class="alert alert-dismissible alert-<%= message %>"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= content_tag :div, msg, :id => "flash_#{name}" %></div>');
+/ - else
+  //display new validation messages
+  - @post.errors.full_messages.each do |message|
+    | $("ul#error").append('<li><%= escape_javascript(message)%></li>');

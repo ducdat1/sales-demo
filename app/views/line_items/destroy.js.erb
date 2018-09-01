@@ -1,0 +1,4 @@
+$('.destroy-item').bind('ajax:success', function () {
+    $(this).closest('tr').fadeOut();
+    console.log('test');
+});

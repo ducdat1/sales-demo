@@ -1,0 +1,46 @@
+- content_for :title do
+  |  List Posts
+
+= render 'partials/messages'
+ul.notice
+h1
+  | Posts
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th
+        | Id post
+      th
+        | Title
+      th
+        | Content
+      th
+        | Like
+      th
+        | Download
+      th[colspan="3"]
+  tbody#posts
+    = render @posts
+br
+#form-post-create.col-sm-8.col-sm-offset-2
+  = form_for(@post,  html: { class: "form-horizontal", role: "form" }, remote: true) do |f|
+    #error_explanation
+      ul#error
+    .form-group
+      = f.label :title, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.text_field :title, class: "form-control"
+    .form-group
+      = f.label :content, class: "col-sm-2 control-label"
+      .col-sm-10
+        = f.text_area :content, class: "form-control", row: '6'
+    .form-group
+      .col-sm-offset-2.col-sm-10.actions
+        = f.submit class: "btn btn-primary"
+
+div
+  = link_to 'javascripts:;', class: 'add-category btn btn-primary', style: 'display: none;' do
+    span.glyphicon.glyphicon-plus
+    |  New Category
+
+#form-post-update.col-sm-8.col-sm-offset-2

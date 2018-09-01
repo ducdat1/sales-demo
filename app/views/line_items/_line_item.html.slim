@@ -1,0 +1,12 @@
+tr
+  td
+  td
+    = line_item.product.title
+  td
+    = line_item.quantity
+  td
+    = line_item.product.price
+  td
+    = number_to_currency(line_item.total_price)
+  td
+    = link_to 'Delete item', line_item_path(line_item.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'destroy-item', remote: true

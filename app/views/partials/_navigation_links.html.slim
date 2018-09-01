@@ -1,0 +1,24 @@
+// add navigation links to this file
+li
+  = link_to 'Display post', display_path
+li
+  = link_to 'Post', posts_path
+li
+  = link_to 'Category', manager_categories_path
+li
+  = link_to 'Product', products_path
+- if session[:user].nil?
+  li
+    = link_to 'Login', new_user_session_path
+- else
+  li
+    = link_to "Hello, #{session[:user]['name']}", edit_user_registration_path
+  li
+    = link_to 'Logout', destroy_user_session_path, method: 'delete'
+li
+  = link_to 'Register', new_user_registration_path
+li
+  = link_to 'Logout', destroy_user_session_path, method: 'delete'
+/ )- unless session[:cart_id].nil?
+  / /   li
+  / /     = link_to 'Cart', cart_path(session[:cart_id]

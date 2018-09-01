@@ -1,0 +1,21 @@
+- content_for :title do
+  |  My Homepage
+
+.col-sm-12.coll-offset-2.list-item
+  .page-headerindex
+    h1
+      | List product
+  - @products.each do |product|
+    .item.col-sm-4
+      / = image_tag(product.image_url, alt: 'Image') if product.image_url?
+      = link_to(image_tag(product.image_url.thumb.url, alt: 'Image'), product.image_url.url, target: '_blank') if product.image_url?
+      h3.title
+        = product.title
+      .price_line
+        span.price
+          = number_to_currency(product.price)
+      = button_to 'Add to cart', line_items_path(:product_id => product), class: 'btn btn-default', remote: true
+      .detail_item
+        = link_to product_path(product), class: 'add-category btn' do
+          span.glyphicon.glyphicon-th-list
+          |  Details

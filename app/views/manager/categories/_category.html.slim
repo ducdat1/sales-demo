@@ -1,0 +1,13 @@
+| <tr id="
+= category.cat_id
+| "> 
+td
+  = category.cat_name
+td
+  = category.cat_content
+td
+  = link_to 'Show', manager_category_path(category)
+td
+  = link_to 'Edit', 'javascript:;', class: 'update-cat'
+  td
+    = link_to 'Destroy', manager_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,16 @@
+- content_for :title do
+  |  Add product
+
+.page-header
+  h1
+    | Editing Product
+
+= render 'form', product: @product
+
+= link_to @product, class: 'btn btn-default' do
+  span.glyphicon.glyphicon-list-alt
+  |  Show
+
+= link_to products_path, class: 'btn btn-default' do
+  span.glyphicon.glyphicon-list-alt
+  |  Back

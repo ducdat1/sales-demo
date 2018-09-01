@@ -1,0 +1,32 @@
+- content_for :title do
+  |   Your Cart
+
+h1
+  | Cart information
+= render 'partials/messages'
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th
+        | No.
+      th
+        | Title
+      th
+        | Quantity
+      th
+        | Price
+      th
+        | Total
+      th
+  tbody
+    = render @cart.line_items
+    tr
+      td[colspan="4"]
+        | Total
+      td
+        = number_to_currency(@cart.total_price)
+      td
+        = button_to 'Empty cart', @cart, method: 'delete', confirm: 'Are you sure?'
+
+= button_to 'Buy continue', @cart, method: 'get'
+= button_to 'Checkout', checkout_path, method: 'get', confirm: 'Are you sure?'

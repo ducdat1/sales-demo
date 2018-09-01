@@ -1,0 +1,7 @@
+/ Rails flash partials styled for Bootstrap 3.0
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    - message = (name.to_s == 'notice') ? 'success' : 'danger'
+    = content_tag :div, :class => "alert alert-dismissible alert-#{message}"
+      button.close type="button" data-dismiss="alert" aria-hidden="true" = 'X'
+      = content_tag :div, msg, :id => "flash_#{name}"

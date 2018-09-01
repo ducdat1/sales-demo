@@ -1,0 +1,48 @@
+- content_for :title do
+  |  Categories 
+.page-header
+  = link_to 'javascripts:;', class: 'add-category btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    |  New Category
+  = link_to 'javascripts:;', class: 'close-category btn btn-default' do
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  h1
+    | Listing categories
+
+= render 'partials/messages'
+ul.notice
+.table-responsive
+  #new-category.col-sm-12.col-offset-2
+    = form_for(@category, url: manager_categories_path, html: { class: "form-horizontal", role: "form" }, remote: true) do |f|
+      #error_explanation
+        ul#error
+      .form-group
+        = f.label :category_id, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.number_field :cat_id, class: "form-control"
+      .form-group
+        = f.label :category_name, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :cat_name, class: "form-control"
+      .form-group
+        = f.label :category_content, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_area :cat_content, class: "form-control"
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit class: "btn btn-primary"
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Cat name
+        th
+          | Cat content
+        th
+        th
+        th
+    tbody#categories
+      = render @categories
+
+= javascript_include_tag 'custom', 'data-turbolinks-track' => 'reload'

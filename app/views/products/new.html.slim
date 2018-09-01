@@ -1,0 +1,11 @@
+- content_for :title do
+  |  Add product
+
+= render 'partials/messages'
+.page-header
+  h1
+    | New Product
+= render 'form', product: @product
+= link_to products_path, class: 'btn btn-default' do
+  span.glyphicon.glyphicon-list-alt
+  |  Back 

@@ -1,0 +1,17 @@
+- content_for :title do
+  |  My Homepage
+
+.col-sm-12.coll-offset-2.list-item
+  .page-headerindex
+    h1
+      | New Post Today
+  - @posts.each do |post|
+    .item.col-sm-4
+      h3.title
+        = post.title
+      = post.content
+      br
+      - post.interactions.each do |itr|
+        = itr.like
+      = button_to 'Like', add_fav_path(:post_id => post), class: 'btn btn-default', remote: true
+      = button_to 'Comment', comments_path(:post_id => post), class: 'btn btn-default', method: 'get'

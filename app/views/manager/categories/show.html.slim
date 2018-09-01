@@ -1,0 +1,22 @@
+.page-header
+  = link_to manager_categories_path, class: 'btn btn-default' do
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_manager_category_path(@category), class: 'btn btn-primary' do
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show category
+dl.dl-horizontal
+  dt
+    | Cat:
+  dd
+    = @category.cat_id
+  dt
+    | Cat name:
+  dd
+    = @category.cat_name
+  dt
+    | Cat content:
+  dd
+    = @category.cat_content
